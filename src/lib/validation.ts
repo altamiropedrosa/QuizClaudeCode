@@ -47,6 +47,19 @@ export const submitScoreSchema = z.object({
 
 export type SubmitScoreInput = z.infer<typeof submitScoreSchema>;
 
+/** Shape of the finished match kept in sessionStorage (untrusted: may be stale or edited). */
+export const storedMatchSchema = z
+  .object({
+    category: z.enum(CATEGORY_FILTERS),
+    questions: z.array(questionSchema).length(MATCH_SIZE),
+    answers: z.array(answerSchema).length(MATCH_SIZE),
+    saved: z.object({ nickname: z.string(), rank: z.number().int().positive() }).optional(),
+  })
+  .refine((m) => {
+    const ids = new Set(m.questions.map((q) => q.id));
+    return m.answers.every((a) => ids.has(a.questionId));
+  }, "respostas não correspondem às perguntas");
+
 export type MatchValidation = { ok: true } | { ok: false; reason: string };
 
 /** Plausibility checks for a submitted match (PRD §8.3). */

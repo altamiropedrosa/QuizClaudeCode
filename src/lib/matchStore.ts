@@ -1,5 +1,6 @@
 import type { AnswerSubmission, CategoryFilter, Question } from "@/types";
 import { STORAGE_KEYS, writeJson } from "./storage";
+import { storedMatchSchema } from "./validation";
 
 /** A finished match, kept in sessionStorage so /resultado survives a refresh. */
 export interface StoredMatch {
@@ -7,6 +8,17 @@ export interface StoredMatch {
   questions: Question[];
   answers: AnswerSubmission[];
   saved?: { nickname: string; rank: number };
+}
+
+/** Parses stored JSON; anything malformed, stale or tampered counts as "no match". */
+export function parseStoredMatch(raw: string | null): StoredMatch | null {
+  if (!raw) return null;
+  try {
+    const parsed = storedMatchSchema.safeParse(JSON.parse(raw));
+    return parsed.success ? parsed.data : null;
+  } catch {
+    return null;
+  }
 }
 
 const listeners = new Set<() => void>();
@@ -27,15 +39,7 @@ export function getStoredMatch(): StoredMatch | null {
   } catch {
     return cache.value;
   }
-  if (raw !== cache.raw) {
-    let value: StoredMatch | null = null;
-    try {
-      value = raw ? (JSON.parse(raw) as StoredMatch) : null;
-    } catch {
-      value = null;
-    }
-    cache = { raw, value };
-  }
+  if (raw !== cache.raw) cache = { raw, value: parseStoredMatch(raw) };
   return cache.value;
 }
 

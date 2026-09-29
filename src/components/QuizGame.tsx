@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useReducer, useRef } from "react";
-import { useCountdown } from "@/hooks/useCountdown";
 import { saveMatch } from "@/lib/matchStore";
 import { isCorrectAnswer, scoreAnswer, scoreMatch } from "@/lib/scoring";
 import { readJson, STORAGE_KEYS, writeJson } from "@/lib/storage";
@@ -20,8 +19,8 @@ import {
 import { CategoryBadge, LevelBadge } from "./Badges";
 import { FeedbackPanel, type Outcome } from "./FeedbackPanel";
 import { AnswerButtons, QuestionStatement } from "./QuestionCard";
+import { QuestionTimer, type QuestionTimerHandle } from "./QuestionTimer";
 import { TerminalWindow } from "./TerminalWindow";
-import { TimerBar } from "./TimerBar";
 
 const TRANSITION_MS = 1800;
 
@@ -98,6 +97,7 @@ export function QuizGame({ category }: { category: CategoryFilter }) {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const transitionRef = useRef<HTMLButtonElement>(null);
+  const timerRef = useRef<QuestionTimerHandle>(null);
 
   const question: Question | undefined = state.questions[state.index];
   const lastAnswer = state.answers[state.index];
@@ -115,16 +115,13 @@ export function QuizGame({ category }: { category: CategoryFilter }) {
   }, [category, state.attempt]);
 
   const onExpire = useCallback(() => dispatch({ type: "answer", answer: null, timeMs: QUESTION_TIME_MS }), []);
-  const { remainingMs, elapsedMs } = useCountdown(QUESTION_TIME_MS, state.phase === "question", state.index, onExpire);
 
-  const answer = useCallback(
-    (value: boolean) => {
-      // Server rejects sub-400 ms answers as implausible; report at least that (costs <1 bonus point).
-      const timeMs = Math.round(Math.min(Math.max(elapsedMs(), MIN_ANSWER_MS), QUESTION_TIME_MS));
-      dispatch({ type: "answer", answer: value, timeMs });
-    },
-    [elapsedMs],
-  );
+  const answer = useCallback((value: boolean) => {
+    const elapsed = timerRef.current?.elapsedMs() ?? QUESTION_TIME_MS;
+    // Server rejects sub-400 ms answers as implausible; report at least that (costs <1 bonus point).
+    const timeMs = Math.round(Math.min(Math.max(elapsed, MIN_ANSWER_MS), QUESTION_TIME_MS));
+    dispatch({ type: "answer", answer: value, timeMs });
+  }, []);
 
   // Block transition: auto-advance after a short pause.
   useEffect(() => {
@@ -234,7 +231,13 @@ export function QuizGame({ category }: { category: CategoryFilter }) {
           </span>
         </div>
 
-        <TimerBar remainingMs={state.phase === "question" ? remainingMs : (QUESTION_TIME_MS - (lastAnswer?.timeMs ?? 0))} />
+        <QuestionTimer
+          ref={timerRef}
+          running={state.phase === "question"}
+          runKey={state.index}
+          frozenMs={QUESTION_TIME_MS - (lastAnswer?.timeMs ?? 0)}
+          onExpire={onExpire}
+        />
 
         <div className="space-y-3" data-testid="question" data-question-id={question.id} data-level={question.level}>
           <CategoryBadge category={question.category} />

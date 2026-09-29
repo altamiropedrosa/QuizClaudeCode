@@ -54,6 +54,16 @@ test("tempo esgotado conta como erro", async ({ page }) => {
   await expect(page.getByTestId("score")).toContainText("0");
 });
 
+test("partida corrompida no sessionStorage não quebra o resultado", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() =>
+    sessionStorage.setItem("qcc:match", JSON.stringify({ category: "todas", questions: [], answers: [{ questionId: "x" }] })),
+  );
+  await page.goto("/resultado");
+  await expect(page.getByText("Nenhuma partida encontrada por aqui.")).toBeVisible();
+  await expect(page.getByTestId("error-boundary")).toHaveCount(0);
+});
+
 test("transição de bloco aparece antes da 6ª pergunta", async ({ page }) => {
   const responsePromise = page.waitForResponse((r) => r.url().includes("/api/questions"));
   await page.goto("/quiz");
