@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Design tokens (PRD §9.1). Light accent darkened from #C4562F to reach WCAG AA (4.5:1). */
+:root {
+  --bg: #faf7f2;
+  --surface: #ffffff;
+  --text: #2b2622;
+  --muted: #6b625a;
+  --accent: #b84f2b;
+  --on-accent: #ffffff;
+  --success: #2f7d4f;
+  --danger: #b3372f;
+  --border: #e4ddd3;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #1c1917;
+  --surface: #26221f;
+  --text: #f1ece4;
+  --muted: #a39a90;
+  --accent: #e07a55;
+  --on-accent: #1c1917;
+  --success: #5cc48a;
+  --danger: #f0776e;
+  --border: #3d3632;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1917;
+    --surface: #26221f;
+    --text: #f1ece4;
+    --muted: #a39a90;
+    --accent: #e07a55;
+    --on-accent: #1c1917;
+    --success: #5cc48a;
+    --danger: #f0776e;
+    --border: #3d3632;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-border: var(--border);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.cursor-blink::after {
+  content: "▋";
+  margin-left: 0.15em;
+  color: var(--accent);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink::after {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

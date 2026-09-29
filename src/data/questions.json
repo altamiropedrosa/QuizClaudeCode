@@ -1,0 +1,502 @@
+[
+  {
+    "id": "ini-001",
+    "level": "iniciante",
+    "category": "fundamentos",
+    "statement": "Claude Code é uma ferramenta de programação agêntica da Anthropic que roda no terminal.",
+    "answer": true,
+    "explanation": "Ele lê seu código, edita arquivos e executa comandos a partir de instruções em linguagem natural.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/overview",
+    "tags": ["conceito"]
+  },
+  {
+    "id": "ini-002",
+    "level": "iniciante",
+    "category": "fundamentos",
+    "statement": "Claude Code é desenvolvido pela OpenAI.",
+    "answer": false,
+    "explanation": "É produto da Anthropic, criadora dos modelos Claude.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/overview",
+    "tags": ["conceito"]
+  },
+  {
+    "id": "ini-003",
+    "level": "iniciante",
+    "category": "fundamentos",
+    "statement": "Claude Code só pode ser usado no terminal.",
+    "answer": false,
+    "explanation": "Também há extensões para VS Code e JetBrains, app desktop e versão web.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/ide-integrations",
+    "tags": ["ide", "plataformas"]
+  },
+  {
+    "id": "ini-004",
+    "level": "iniciante",
+    "category": "boas-praticas",
+    "statement": "Claude Code pode ajudar a entender uma base de código que você nunca viu.",
+    "answer": true,
+    "explanation": "Você pode pedir resumos de arquitetura e localizar onde algo é implementado.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "tags": ["casos-de-uso", "onboarding"]
+  },
+  {
+    "id": "ini-005",
+    "level": "iniciante",
+    "category": "fundamentos",
+    "statement": "Por padrão, o Claude Code pede permissão antes de editar arquivos ou executar comandos.",
+    "answer": true,
+    "explanation": "O modelo de permissões mantém a pessoa no controle das ações sensíveis.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/iam",
+    "tags": ["permissoes"]
+  },
+  {
+    "id": "ini-006",
+    "level": "iniciante",
+    "category": "boas-praticas",
+    "statement": "Claude Code só serve para escrever código novo, não para depurar ou refatorar.",
+    "answer": false,
+    "explanation": "Ele também depura, refatora, escreve testes, explica código e automatiza tarefas de git.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "tags": ["casos-de-uso"]
+  },
+  {
+    "id": "ini-007",
+    "level": "iniciante",
+    "category": "boas-praticas",
+    "statement": "Com Claude Code, a revisão humana do código gerado deixa de ser necessária.",
+    "answer": false,
+    "explanation": "Revisar continua sendo boa prática; o humano é responsável pelo que vai para produção.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/security",
+    "tags": ["revisao", "seguranca"]
+  },
+  {
+    "id": "ini-008",
+    "level": "iniciante",
+    "category": "fundamentos",
+    "statement": "Para iniciar o Claude Code, você digita `claude` no terminal dentro da pasta do projeto.",
+    "answer": true,
+    "explanation": "Esse é o comando que abre a sessão interativa no diretório atual.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/quickstart",
+    "tags": ["cli"]
+  },
+  {
+    "id": "ini-009",
+    "level": "iniciante",
+    "category": "fundamentos",
+    "statement": "Usar Claude Code exige conta na Anthropic (assinatura ou acesso via API/nuvem parceira).",
+    "answer": true,
+    "explanation": "É necessária autenticação; há opções via plano Claude, Console da Anthropic ou provedores de nuvem.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/setup",
+    "tags": ["instalacao", "login"]
+  },
+  {
+    "id": "ini-010",
+    "level": "iniciante",
+    "category": "boas-praticas",
+    "statement": "Claude Code pode automatizar tarefas repetitivas de desenvolvimento, como escrever testes e commits.",
+    "answer": true,
+    "explanation": "Isso reduz trabalho manual e libera tempo para decisões de maior valor.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "tags": ["casos-de-uso", "automacao"]
+  },
+  {
+    "id": "int-001",
+    "level": "intermediario",
+    "category": "features",
+    "statement": "O arquivo CLAUDE.md é carregado automaticamente como contexto no início de cada sessão.",
+    "answer": true,
+    "explanation": "Serve para registrar convenções, comandos e regras do projeto.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/memory",
+    "tags": ["claude-md", "memoria"]
+  },
+  {
+    "id": "int-002",
+    "level": "intermediario",
+    "category": "features",
+    "statement": "O comando `/init` cria um CLAUDE.md inicial analisando o projeto.",
+    "answer": true,
+    "explanation": "Gera um ponto de partida que você pode editar.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/memory",
+    "tags": ["claude-md", "slash-commands"]
+  },
+  {
+    "id": "int-003",
+    "level": "intermediario",
+    "category": "features",
+    "statement": "O comando `/clear` limpa o contexto da conversa atual.",
+    "answer": true,
+    "explanation": "Útil ao trocar de tarefa para não carregar contexto irrelevante.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/slash-commands",
+    "tags": ["contexto", "slash-commands"]
+  },
+  {
+    "id": "int-004",
+    "level": "intermediario",
+    "category": "features",
+    "statement": "O comando `/compact` resume a conversa para liberar espaço na janela de contexto.",
+    "answer": true,
+    "explanation": "Mantém o essencial e reduz tokens usados.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/slash-commands",
+    "tags": ["contexto", "slash-commands"]
+  },
+  {
+    "id": "int-005",
+    "level": "intermediario",
+    "category": "features",
+    "statement": "No Plan Mode, o Claude edita os arquivos imediatamente sem apresentar um plano.",
+    "answer": false,
+    "explanation": "No Plan Mode ele apenas analisa e propõe um plano, sem modificar arquivos até você aprovar.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "tags": ["plan-mode", "modos"]
+  },
+  {
+    "id": "int-006",
+    "level": "intermediario",
+    "category": "features",
+    "statement": "Você pode criar slash commands personalizados como arquivos Markdown em `.claude/commands`.",
+    "answer": true,
+    "explanation": "Eles viram comandos reutilizáveis do projeto (ou pessoais em `~/.claude/commands`).",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/slash-commands",
+    "tags": ["slash-commands"]
+  },
+  {
+    "id": "int-007",
+    "level": "intermediario",
+    "category": "features",
+    "statement": "O CLAUDE.md só pode existir na raiz do projeto.",
+    "answer": false,
+    "explanation": "Também pode existir em `~/.claude/CLAUDE.md` e em subpastas, que são carregados conforme o contexto.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/memory",
+    "tags": ["claude-md", "memoria"]
+  },
+  {
+    "id": "int-008",
+    "level": "intermediario",
+    "category": "api-sdk",
+    "statement": "`claude -p \"pergunta\"` executa uma consulta em modo não interativo e imprime a resposta.",
+    "answer": true,
+    "explanation": "Útil em scripts e pipelines de CI.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/cli-reference",
+    "tags": ["headless", "cli"]
+  },
+  {
+    "id": "int-009",
+    "level": "intermediario",
+    "category": "fundamentos",
+    "statement": "Pressionar `Esc` interrompe o Claude durante o trabalho sem encerrar a sessão.",
+    "answer": true,
+    "explanation": "Você pode redirecionar a conversa em seguida.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/interactive-mode",
+    "tags": ["atalhos"]
+  },
+  {
+    "id": "int-010",
+    "level": "intermediario",
+    "category": "fundamentos",
+    "statement": "Não é possível retomar uma conversa anterior do Claude Code.",
+    "answer": false,
+    "explanation": "`claude --continue` retoma a última e `claude --resume` permite escolher uma sessão.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/cli-reference",
+    "tags": ["sessoes", "cli"]
+  },
+  {
+    "id": "ava-001",
+    "level": "avancado",
+    "category": "features",
+    "statement": "Hooks são comandos que rodam automaticamente em pontos do ciclo de vida, como antes ou depois do uso de uma ferramenta.",
+    "answer": true,
+    "explanation": "Ex.: `PreToolUse` e `PostToolUse`.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/hooks",
+    "tags": ["hooks"]
+  },
+  {
+    "id": "ava-002",
+    "level": "avancado",
+    "category": "features",
+    "statement": "A execução de hooks é decidida pelo modelo e, portanto, não é garantida.",
+    "answer": false,
+    "explanation": "Hooks são determinísticos: o harness os executa sempre que o evento ocorre.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/hooks-guide",
+    "tags": ["hooks"]
+  },
+  {
+    "id": "ava-003",
+    "level": "avancado",
+    "category": "features",
+    "statement": "Um hook `PreToolUse` pode bloquear a execução de uma ferramenta.",
+    "answer": true,
+    "explanation": "Por exemplo, impedir edição de arquivos sensíveis retornando código de saída de bloqueio.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/hooks",
+    "tags": ["hooks", "seguranca"]
+  },
+  {
+    "id": "ava-004",
+    "level": "avancado",
+    "category": "features",
+    "statement": "MCP (Model Context Protocol) permite conectar o Claude Code a ferramentas e fontes de dados externas.",
+    "answer": true,
+    "explanation": "Ex.: GitHub, bancos de dados, Slack, navegadores.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/mcp",
+    "tags": ["mcp"]
+  },
+  {
+    "id": "ava-005",
+    "level": "avancado",
+    "category": "features",
+    "statement": "Servidores MCP só podem ser executados localmente via stdio.",
+    "answer": false,
+    "explanation": "Também há transportes remotos, como HTTP e SSE.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/mcp",
+    "tags": ["mcp"]
+  },
+  {
+    "id": "ava-006",
+    "level": "avancado",
+    "category": "features",
+    "statement": "Subagents têm janela de contexto própria, separada da conversa principal.",
+    "answer": true,
+    "explanation": "Isso evita poluir o contexto principal com pesquisas e tarefas paralelas.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/sub-agents",
+    "tags": ["subagents", "contexto"]
+  },
+  {
+    "id": "ava-007",
+    "level": "avancado",
+    "category": "features",
+    "statement": "Subagents podem ser definidos como arquivos Markdown em `.claude/agents`.",
+    "answer": true,
+    "explanation": "O arquivo tem frontmatter (nome, descrição, ferramentas) e o prompt do agente.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/sub-agents",
+    "tags": ["subagents"]
+  },
+  {
+    "id": "ava-008",
+    "level": "avancado",
+    "category": "features",
+    "statement": "Uma skill é definida por uma pasta contendo um arquivo `SKILL.md`.",
+    "answer": true,
+    "explanation": "O Claude carrega a skill quando a descrição corresponde à tarefa.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/skills",
+    "tags": ["skills"]
+  },
+  {
+    "id": "ava-009",
+    "level": "avancado",
+    "category": "fundamentos",
+    "statement": "`settings.local.json` é pensado para preferências pessoais que não devem ser commitadas.",
+    "answer": true,
+    "explanation": "Diferente de `settings.json` do projeto, que pode ser compartilhado com o time.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/settings",
+    "tags": ["settings"]
+  },
+  {
+    "id": "ava-010",
+    "level": "avancado",
+    "category": "api-sdk",
+    "statement": "O Claude Agent SDK permite construir seus próprios agentes reutilizando o mesmo loop e ferramentas do Claude Code.",
+    "answer": true,
+    "explanation": "Disponível para TypeScript e Python.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/sdk",
+    "tags": ["agent-sdk"]
+  },
+  {
+    "id": "api-001",
+    "level": "iniciante",
+    "category": "api-sdk",
+    "statement": "A Claude API e o Claude Code são a mesma coisa; usar um dispensa o outro.",
+    "answer": false,
+    "explanation": "A API dá acesso programático aos modelos Claude; o Claude Code é uma ferramenta agêntica pronta construída sobre eles.",
+    "sourceUrl": "https://docs.claude.com/en/api/overview",
+    "tags": ["api", "conceito"]
+  },
+  {
+    "id": "api-002",
+    "level": "iniciante",
+    "category": "api-sdk",
+    "statement": "A Anthropic oferece SDKs oficiais para a Claude API, como Python e TypeScript.",
+    "answer": true,
+    "explanation": "Os SDKs simplificam autenticação, requisições e streaming.",
+    "sourceUrl": "https://docs.claude.com/en/api/client-sdks",
+    "tags": ["api", "sdk"]
+  },
+  {
+    "id": "api-003",
+    "level": "intermediario",
+    "category": "api-sdk",
+    "statement": "O Claude Agent SDK está disponível para TypeScript e Python.",
+    "answer": true,
+    "explanation": "Permite criar agentes com o mesmo loop e ferramentas do Claude Code.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/sdk",
+    "tags": ["agent-sdk"]
+  },
+  {
+    "id": "api-004",
+    "level": "intermediario",
+    "category": "api-sdk",
+    "statement": "`claude -p` com `--output-format json` permite integrar o Claude Code a scripts com saída estruturada.",
+    "answer": true,
+    "explanation": "O modo não interativo é feito para automação.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/cli-reference",
+    "tags": ["headless", "automacao"]
+  },
+  {
+    "id": "api-005",
+    "level": "intermediario",
+    "category": "api-sdk",
+    "statement": "O Claude Code pode ser executado em pipelines de CI/CD, como o GitHub Actions.",
+    "answer": true,
+    "explanation": "Existe integração oficial para automatizar revisões e tarefas em PRs.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/github-actions",
+    "tags": ["ci-cd"]
+  },
+  {
+    "id": "api-006",
+    "level": "avancado",
+    "category": "api-sdk",
+    "statement": "A Messages API é stateless: o histórico da conversa deve ser reenviado a cada requisição.",
+    "answer": true,
+    "explanation": "A API não guarda estado; sua aplicação gerencia as mensagens anteriores.",
+    "sourceUrl": "https://docs.claude.com/en/api/messages",
+    "tags": ["api", "messages"]
+  },
+  {
+    "id": "api-007",
+    "level": "avancado",
+    "category": "api-sdk",
+    "statement": "Em tool use com ferramentas definidas por você, o código da função é executado pela Anthropic.",
+    "answer": false,
+    "explanation": "O modelo apenas solicita a chamada; sua aplicação executa a função e devolve o resultado.",
+    "sourceUrl": "https://docs.claude.com/en/docs/agents-and-tools/tool-use/overview",
+    "tags": ["api", "tool-use"]
+  },
+  {
+    "id": "api-008",
+    "level": "avancado",
+    "category": "api-sdk",
+    "statement": "Prompt caching pode reduzir custo e latência quando o início do prompt se repete entre requisições.",
+    "answer": true,
+    "explanation": "Prefixos estáveis são reaproveitados em vez de reprocessados.",
+    "sourceUrl": "https://docs.claude.com/en/docs/build-with-claude/prompt-caching",
+    "tags": ["api", "prompt-caching"]
+  },
+  {
+    "id": "api-009",
+    "level": "avancado",
+    "category": "api-sdk",
+    "statement": "Não há problema em colocar a chave da API diretamente no código do front-end.",
+    "answer": false,
+    "explanation": "A chave ficaria exposta; deve ficar no servidor, em variável de ambiente.",
+    "sourceUrl": "https://docs.claude.com/en/api/overview",
+    "tags": ["api", "seguranca"]
+  },
+  {
+    "id": "api-010",
+    "level": "avancado",
+    "category": "api-sdk",
+    "statement": "O Claude Agent SDK pode se conectar a servidores MCP.",
+    "answer": true,
+    "explanation": "Isso estende as ferramentas disponíveis ao agente.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/sdk",
+    "tags": ["agent-sdk", "mcp"]
+  },
+  {
+    "id": "bp-001",
+    "level": "iniciante",
+    "category": "boas-praticas",
+    "statement": "Descrever objetivo e contexto com clareza no pedido melhora o resultado do Claude Code.",
+    "answer": true,
+    "explanation": "Instruções específicas reduzem ambiguidade e retrabalho.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "tags": ["prompts"]
+  },
+  {
+    "id": "bp-002",
+    "level": "iniciante",
+    "category": "boas-praticas",
+    "statement": "Os casos de uso do Claude Code se limitam a desenvolvimento de software.",
+    "answer": false,
+    "explanation": "Também serve para documentação, análise de dados e automação de tarefas, inclusive por perfis de negócio.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/overview",
+    "tags": ["casos-de-uso", "negocio"]
+  },
+  {
+    "id": "bp-003",
+    "level": "iniciante",
+    "category": "boas-praticas",
+    "statement": "Não é necessário dar contexto do projeto: o Claude adivinha convenções e regras internas.",
+    "answer": false,
+    "explanation": "Contexto explícito, como o CLAUDE.md, é o que ensina o projeto a ele.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/memory",
+    "tags": ["contexto", "claude-md"]
+  },
+  {
+    "id": "bp-004",
+    "level": "intermediario",
+    "category": "boas-praticas",
+    "statement": "Em tarefas complexas, planejar antes de codar (Plan Mode) costuma dar melhores resultados.",
+    "answer": true,
+    "explanation": "Alinhar a abordagem antes de editar evita mudanças na direção errada.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "tags": ["plan-mode", "planejamento"]
+  },
+  {
+    "id": "bp-005",
+    "level": "intermediario",
+    "category": "boas-praticas",
+    "statement": "Dar ao Claude uma forma de verificar o próprio trabalho, como testes e lint, melhora a qualidade.",
+    "answer": true,
+    "explanation": "Ele consegue rodar, ver a falha e corrigir sozinho.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "tags": ["testes", "verificacao"]
+  },
+  {
+    "id": "bp-006",
+    "level": "intermediario",
+    "category": "boas-praticas",
+    "statement": "Um CLAUDE.md enxuto e objetivo tende a funcionar melhor do que um extenso com tudo sobre o projeto.",
+    "answer": true,
+    "explanation": "Instruções demais diluem as importantes e consomem contexto.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/memory",
+    "tags": ["claude-md", "contexto"]
+  },
+  {
+    "id": "bp-007",
+    "level": "intermediario",
+    "category": "boas-praticas",
+    "statement": "Sessões muito longas sem `/clear` ou `/compact` não afetam a qualidade, porque o contexto é ilimitado.",
+    "answer": false,
+    "explanation": "A janela de contexto é limitada e contexto poluído prejudica as respostas.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/slash-commands",
+    "tags": ["contexto"]
+  },
+  {
+    "id": "bp-008",
+    "level": "avancado",
+    "category": "boas-praticas",
+    "statement": "`--dangerously-skip-permissions` é recomendado em máquinas pessoais com dados sensíveis.",
+    "answer": false,
+    "explanation": "Ele ignora as confirmações; só deve ser usado em ambientes isolados e controlados.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/security",
+    "tags": ["permissoes", "seguranca"]
+  },
+  {
+    "id": "bp-009",
+    "level": "avancado",
+    "category": "boas-praticas",
+    "statement": "Rodar várias sessões em paralelo com git worktrees é uma prática para tarefas independentes.",
+    "answer": true,
+    "explanation": "Cada worktree tem seus arquivos, evitando conflitos entre sessões.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/common-workflows",
+    "tags": ["paralelismo", "git"]
+  },
+  {
+    "id": "bp-010",
+    "level": "avancado",
+    "category": "boas-praticas",
+    "statement": "Delegar investigações extensas a subagents ajuda a preservar o contexto da conversa principal.",
+    "answer": true,
+    "explanation": "Só o resumo do subagent volta para a sessão principal.",
+    "sourceUrl": "https://docs.claude.com/en/docs/claude-code/sub-agents",
+    "tags": ["subagents", "contexto"]
+  }
+]
