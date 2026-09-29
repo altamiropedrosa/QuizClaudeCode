@@ -9,7 +9,8 @@ export function getSupabase(): SupabaseClient {
     const url = process.env.SUPABASE_URL;
     const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
     if (!url || !key) throw new Error("SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY não configuradas");
-    client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+    // Only the origin matters: tolerate values copied with a path (e.g. ".../rest/v1/"), which break PostgREST.
+    client = createClient(new URL(url).origin, key, { auth: { persistSession: false, autoRefreshToken: false } });
   }
   return client;
 }
