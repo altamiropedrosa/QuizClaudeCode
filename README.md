@@ -2,6 +2,8 @@
 
 Quiz de Verdadeiro ou Falso sobre o Claude Code: 15 perguntas com dificuldade crescente (5 Iniciante → 5 Intermediário → 5 Avançado), 10 segundos por pergunta, explicação e fonte após cada resposta, e ranking global sem login.
 
+**Produção:** https://quiz-claude-code-gold.vercel.app
+
 Requisitos completos em [`prd.md`](./prd.md).
 
 ## Rodando localmente

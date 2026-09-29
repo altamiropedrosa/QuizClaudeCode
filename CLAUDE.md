@@ -52,6 +52,6 @@ In E2E runs, Supabase is not configured on purpose: the ranking page must show i
 
 ## Deploy
 
-The app deploys to Vercel with functions in `gru1` (set in `vercel.json`) and Supabase in `sa-east-1`. Every push to `main` deploys to production.
+The app deploys to Vercel with functions in `gru1` (set in `vercel.json`) and Supabase in `sa-east-1`. Every push to `main` deploys to production at https://quiz-claude-code-gold.vercel.app.
 
 There is a **single environment**: one Supabase project, used by production. This deliberately departs from the two environments in PRD §8.8. Preview deploys and a local `.env.local` therefore write to the real ranking, so don't point automated or E2E runs at it. Schema changes go in `supabase/schema.sql` and are applied through the SQL Editor.
